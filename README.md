@@ -1,2 +1,2 @@
 # HopperBot
-HopperBot is a chatbot that remembers everything you say and uses that to build understanding. It is named after Admiral Grace Hopper.
+HopperBot is a chatbot that can be programmed with simple sentences. It is named after Admiral Grace Hopper.
