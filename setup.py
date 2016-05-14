@@ -11,5 +11,5 @@ setup(name="HopperBot",
       author="Juha Autero",
       author_email="jautero@iki.fi",
       url="https://github.com/jautero/HopperBot",
-      install_requires=["pytest"],
+      install_requires=["pytest","telepot"],
       packages=find_packages())
