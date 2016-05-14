@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
 try:
-    from setuptools import setup
+    from setuptools import setup, find_packages
 except ImportError:
-    from distutils.core import setup
+    from distutils.core import setup, find_packages
 
 setup(name="HopperBot",
       version="0.1",
@@ -12,4 +12,4 @@ setup(name="HopperBot",
       author_email="jautero@iki.fi",
       url="https://github.com/jautero/HopperBot",
       install_requires=["pytest"],
-      packages=)
+      packages=find_packages())
