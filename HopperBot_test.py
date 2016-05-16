@@ -12,3 +12,7 @@ class BasicTestCase(unittest.TestCase):
     def test_message_processing(self):
         response=self.bot.process("Hello World!")
         assert response in self.responses
+        
+    def test_pinky(self):
+        response=self.bot.process("Are you pondering what I'm pondering?")
+        assert response == "Poit, I guess I am."

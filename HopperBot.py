@@ -1,5 +1,9 @@
+import random
+
 class HopperBot:
     def __init__(self):
-        pass
+        self.stockanswers=["A likely story!","I don't see what that has to do with anything!"]
     def process(self,msg):
-        return "A likely story!"
+        if msg == "Are you pondering what I'm pondering?":
+            return "Poit, I guess I am."
+        return random.choice(self.stockanswers)
