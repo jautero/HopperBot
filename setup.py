@@ -12,4 +12,5 @@ setup(name="HopperBot",
       author_email="jautero@iki.fi",
       url="https://github.com/jautero/HopperBot",
       install_requires=["pytest","telepot"],
-      packages=find_packages())
+      py_modules = ['HopperBot','KeywordStore','TelegramAPI'],
+      scripts = ['YourHopperBot.py'])
