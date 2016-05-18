@@ -5,7 +5,7 @@ class API:
         def handle(msg):
             content_type, chat_type, chat_id = telepot.glance(msg)
             if content_type == "text":
-                response=self.bot.process(msg['text'])
+                response=self.bot.process(msg['from']['first_name'],msg['text'])
                 self.apibot.sendMessage(chat_id,response)
         self.bot=bot
         if apikey:
