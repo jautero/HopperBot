@@ -1,3 +1,4 @@
+import yaml 
 # Store an object with list of keywords.
 class KeywordStore:
     def __init__(self):
@@ -13,4 +14,11 @@ class KeywordStore:
         for kw in keywords:
             if self.data.has_key(kw):
                 result.update(self.data[kw])
-        return result
+        if result == set():
+            raise IndexError
+        else:
+            return result
+    def dump(self,file):
+        yaml.dump(self.data,file)
+    def load(self,file):
+        self.data=yaml.load(file)

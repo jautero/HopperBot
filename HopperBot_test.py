@@ -22,3 +22,15 @@ class BasicTestCase(unittest.TestCase):
         for question in self.pinkyquestions:
             answer=self.bot.process(self.nick,question.format(self.botname))
             assert answer in self.pinkyanswers
+    def test_callback(self):
+        answer=self.bot.process(self.nick,self.botname +"!")
+        assert answer == self.nick+"!"
+    def test_remembering(self):
+        self.bot.remember("Hello World!")
+        assert self.bot.memory.get(("hello",))==set(("Hello World!",))
+        assert self.bot.memory.get(("world",))==set(("Hello World!",))
+    def test_recalling(self):
+        self.bot.remember("Hello World!")
+        assert self.bot.recall(set(("hello","world")))==set(("Hello World!",))
+        with self.assertRaises(IndexError):
+            self.bot.recall(set(("foo","bar")))
