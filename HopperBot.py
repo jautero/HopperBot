@@ -1,4 +1,4 @@
-import random, json, re, KeywordStore
+import random, json, re, KeywordStore, StringIO
 
 class HopperBot:
     def __init__(self,name):
@@ -11,6 +11,8 @@ class HopperBot:
     def process(self,nick,msg):
         if msg == self.name + "!":
             return nick + "!"
+        if msg == "dump memory":
+            return self.dump_memory()
         if msg in self.pinkyquestions:
             return random.choice(list(self.pinkyanswers)).format(nick)
         try:
@@ -23,3 +25,7 @@ class HopperBot:
         self.memory.store(msg,tokens)
     def recall(self,tokens):
         return self.memory.get(tokens)
+    def dump_memory(self):
+        stream=StringIO.StringIO()
+        self.memory.dump(stream)
+        return stream.getvalue()

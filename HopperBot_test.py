@@ -1,4 +1,4 @@
-import unittest, json
+import unittest, json, StringIO
 import HopperBot
 
 class BasicTestCase(unittest.TestCase):
@@ -34,3 +34,8 @@ class BasicTestCase(unittest.TestCase):
         assert self.bot.recall(set(("hello","world")))==set(("Hello World!",))
         with self.assertRaises(IndexError):
             self.bot.recall(set(("foo","bar")))
+    def test_dump(self):
+        answer=self.bot.process(self.nick,"dump memory")
+        dumpstream=StringIO.StringIO()
+        self.bot.memory.dump(dumpstream)
+        self.assertEqual(dumpstream.getvalue(), answer)
