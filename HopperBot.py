@@ -1,4 +1,6 @@
 import random, json, re, KeywordStore, StringIO
+import logging
+logging.basicConfig(filename="test.log", level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class HopperBot:
     def __init__(self,name):
@@ -16,8 +18,8 @@ class HopperBot:
         if msg in self.pinkyquestions:
             return random.choice(list(self.pinkyanswers)).format(nick)
         try:
-            return self.recall(re.sub('\W',' ',msg).lower.split()).pop()
-        except: 
+            return self.recall(re.sub('\W',' ',msg).lower().split()).pop()
+        except IndexError: 
             self.remember(msg)
             return random.choice(self.stockanswers)
     def remember(self,msg):

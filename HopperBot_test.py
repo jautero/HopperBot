@@ -32,6 +32,7 @@ class BasicTestCase(unittest.TestCase):
     def test_recalling(self):
         self.bot.remember("Hello World!")
         assert self.bot.recall(set(("hello","world")))==set(("Hello World!",))
+        self.assertEqual(set(("Hello World!",)), self.bot.recall(set(("hello",))))
         with self.assertRaises(IndexError):
             self.bot.recall(set(("foo","bar")))
     def test_dump(self):
@@ -39,3 +40,6 @@ class BasicTestCase(unittest.TestCase):
         dumpstream=StringIO.StringIO()
         self.bot.memory.dump(dumpstream)
         self.assertEqual(dumpstream.getvalue(), answer)
+    def test_recalling_message(self):
+        self.assert_(self.bot.process(self.nick,"Hello World!") in self.responses)
+        self.assertEqual("Hello World!",self.bot.process(self.nick,"hello world"))
