@@ -1,4 +1,4 @@
 #!/bin/sh
-. $HOME/virtenv/HopperBot/bin/activate
+. $HOME/venv/HopperBot/bin/activate
 git pull
 python setup.py install
