@@ -48,3 +48,12 @@ class BasicTestCase(unittest.TestCase):
         msg=MessageUT({"name":self.nick,"text":"Hello World!"})
         self.assert_(self.bot.process(msg) in self.responses)
         self.assertEqual("Hello World!",self.bot.process(msg))
+
+class IDTestCase(unittest.TestCase):
+    def setUp(self):
+        self.nick="tester"
+        self.botname="testbot"
+        self.userid="1234"
+        self.bot=HopperBot.HopperBot(self.botname)
+    def test_id(self):
+        self.assertEqual(self.userid,self.bot.process(MessageUT({"name":self.nick,"text":"id?","userid":self.userid})))

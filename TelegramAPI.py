@@ -8,6 +8,7 @@ class Message:
     def populate_dict(self,msg):
         self.__dict__['name']=msg['from']['first_name']
         self.__dict__['text']=msg['text']
+        self.__dict__['userid']=msg['from']['id']
 class API:
     def __init__(self,bot,apikey=None):
         def handle(msg):

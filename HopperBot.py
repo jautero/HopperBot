@@ -15,6 +15,8 @@ class HopperBot:
             return msg.name + "!"
         if msg.text == "dump memory":
             return self.dump_memory()
+        if msg.text == "id?":
+            return msg.userid
         if msg.text in self.pinkyquestions:
             return random.choice(list(self.pinkyanswers)).format(msg.name)
         try:
