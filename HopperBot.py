@@ -20,7 +20,7 @@ if __name__ == '__main__':
     config=yaml.load(file(os.path.expanduser(os.path.join("~",".HopperBot.yaml"))))
     updater=Updater(config["telegram"]["apikey"])
     me=updater.bot.get_me()
-    updater.chatbot=ChatBot(me.username,
+    updater.bot.chatbot=ChatBot(me.username,
         storage_adapter='chatterbot.storage.MongoDatabaseAdapter',
         database=config["database"])
     register_handlers(updater)
