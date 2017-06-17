@@ -19,7 +19,7 @@ logging.basicConfig(filename="test.log", level=logging.DEBUG, format='%(asctime)
 if __name__ == '__main__':
     config=yaml.load(file(os.path.expanduser(os.path.join("~",".HopperBot.yaml"))))
     updater=Updater(config["telegram"]["apikey"])
-    me=updater.get_me()
+    me=updater.bot.get_me()
     updater.chatbot=ChatBot(me.username,
         storage_adapter='chatterbot.storage.MongoDatabaseAdapter',
         database=config["database"])
