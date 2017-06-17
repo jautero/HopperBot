@@ -3,5 +3,5 @@
 kill `cat hopperbot.pid`
 git pull
 python setup.py install
-python YourHopperBot.py &
+python HopperBot.py &
 echo $! >hopperbot.pid
