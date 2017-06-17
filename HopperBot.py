@@ -8,7 +8,7 @@ def handle_user_id(bot, update):
         "You are {}".format(update.message.from_user.id))
 
 def handle_chatbot(bot, update):
-    update.message.reply_text(bot.chatbot.get_response(update.message.text))
+    update.message.reply_text(bot.chatbot.get_response(update.message.text).text)
 
 def register_handlers(updater):
     updater.dispatcher.add_handler(CommandHandler("id",handle_user_id))
