@@ -10,9 +10,13 @@ def handle_user_id(bot, update):
 def handle_chatbot(bot, update):
     update.message.reply_text(bot.chatbot.get_response(update.message.text).text)
 
+def handle_audio(bot, update):
+    logging.info(update.message.audio)
+
 def register_handlers(updater):
     updater.dispatcher.add_handler(CommandHandler("id",handle_user_id))
     updater.dispatcher.add_handler(MessageHandler(Filters.text,handle_chatbot))
+    updater.dispatcher.add_handler(MessageHandler(Filters.audio,handle_audio))
 
 logging.basicConfig(filename="test.log", level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
