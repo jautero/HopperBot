@@ -12,6 +12,7 @@ def handle_chatbot(bot, update):
 
 def handle_audio(bot, update):
     logging.info(update.message.audio)
+    update.message.reply_text("You sent audio!")
 
 def register_handlers(updater):
     updater.dispatcher.add_handler(CommandHandler("id",handle_user_id))
