@@ -22,8 +22,8 @@ class NoteStore:
         raise NotImplementedError("Method `find` not implemented.")
     def store(self,note):
         raise NotImplementedError("Method `store` not implemented.")
-    def random_name(self):
-        raise NotImplementedError("Method `random_name` not implemented.")
+    def unique_name(self):
+        raise NotImplementedError("Method `unique_name` not implemented.")
 
 
 class NotesAdapter(LogicAdapter):
@@ -47,7 +47,7 @@ class NotesAdapter(LogicAdapter):
         self.taking_note=True
         note_name=remove_start(statement.text,self.START_NOTE)
         if not note_name:
-            note_name=self.store.random_name()
+            note_name=self.store.unique_name()
         found=self.store.find(note_name)
         if found:
             self.current_note=found
