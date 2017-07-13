@@ -33,6 +33,7 @@ class NotesAdapter(LogicAdapter):
     def __init__(self,**kwargs):
         super(NotesAdapter, self).__init__(**kwargs)
         self.taking_note=False
+        self.store=kwargs['notes_store']
 
     def can_process(self, statement):
         return self.taking_note or statement.text.startswith(self.START_NOTE)
