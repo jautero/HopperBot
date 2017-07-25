@@ -45,7 +45,7 @@ class NotesAdapter(LogicAdapter):
             self.current_note=found
             return 1,Statement(found["content"][-1])
         else:
-            self.current_note={'name':note_name,content:[]}
+            self.current_note={'name':note_name,'content':[]}
             return 1,Statement("New note: %s" % (note_name,))
     def store_note(self,statement):
         result=self.store.store(self.current_note)
