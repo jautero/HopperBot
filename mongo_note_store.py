@@ -4,10 +4,10 @@ from pymongo import MongoClient
 class MongoNoteStore(NoteStore):
     NAME_FORMAT = "Note %d"
     def __init__(self,**kwargs):
-        self.database_name = self.kwargs.get(
+        self.database_name = kwargs.get(
             'database', 'chatterbot-database'
         )
-        self.database_uri = self.kwargs.get(
+        self.database_uri = kwargs.get(
             'database_uri', 'mongodb://localhost:27017/'
         )
 
