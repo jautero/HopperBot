@@ -6,25 +6,13 @@ Syntax:
     end note
 """
 from chatterbot.logic import LogicAdapter
+from chatterbot import utils
 
 def remove_start(original,remove):
     if original.startswith(remove):
         return original[len(remove):].strip()
     else:
         return original
-
-class NoteStore:
-    """Abstract base class for NoteStore
-    """
-    def __init__(self):
-        pass
-    def find(self,note):
-        raise NotImplementedError("Method `find` not implemented.")
-    def store(self,note):
-        raise NotImplementedError("Method `store` not implemented.")
-    def unique_name(self):
-        raise NotImplementedError("Method `unique_name` not implemented.")
-
 
 class NotesAdapter(LogicAdapter):
     START_NOTE='take note'
@@ -33,7 +21,9 @@ class NotesAdapter(LogicAdapter):
     def __init__(self,**kwargs):
         super(NotesAdapter, self).__init__(**kwargs)
         self.taking_note=False
-        self.store=kwargs['notes_store']
+        notes_store=kwargs.get('notes_store','note_store.DictNoteStore')
+        utils.validate_adapter_class(notes_store, NoteStore)
+        self.store=utils.initialize_class(notes_store, **kwargs)
 
     def can_process(self, statement):
         return self.taking_note or statement.text.startswith(self.START_NOTE)
