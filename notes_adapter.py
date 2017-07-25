@@ -35,7 +35,7 @@ class NotesAdapter(LogicAdapter):
         if statement.text.startswith(self.END_NOTE):
             return self.store_note(statement)
         self.current_note['content'].append(statement.text)
-        return 1,Statement('line added')
+        return Statement('line added',confidence=1.0)
     def start_note(self, statement):
         self.taking_note=True
         note_name=remove_start(statement.text,self.START_NOTE)
@@ -44,15 +44,15 @@ class NotesAdapter(LogicAdapter):
         found=self.store.find(note_name)
         if found:
             self.current_note=found
-            return 1,Statement(found["content"][-1])
+            return Statement(found["content"][-1],confidence=1.0)
         else:
             self.current_note={'name':note_name,'content':[]}
-            return 1,Statement("New note: %s" % (note_name,))
+            return Statement("New note: %s" % (note_name,),confidence=1.0)
     def store_note(self,statement):
         result=self.store.store(self.current_note)
         if not result:
             self.current_note=None
             self.taking_note=False
-            return 1,Statement("Note stored")
+            return Statement("Note stored",confidence=1.0)
         else:
-            return 1,Statement("Storing failed with %s. Try again." %(result,))
+            return Statement("Storing failed with %s. Try again." %(result,),confidence=1.0)
