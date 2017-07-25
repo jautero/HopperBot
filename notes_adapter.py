@@ -7,6 +7,7 @@ Syntax:
 """
 from chatterbot.logic import LogicAdapter
 from chatterbot import utils
+from note_store import NoteStore
 
 def remove_start(original,remove):
     if original.startswith(remove):
