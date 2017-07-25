@@ -27,6 +27,8 @@ if __name__ == '__main__':
     me=updater.bot.get_me()
     updater.bot.chatbot=ChatBot(me.username,
         storage_adapter='chatterbot.storage.MongoDatabaseAdapter',
+        notes_store='mongo_note_store.MongoNoteStore',
+        logic_adapters=['notes_adapter.NotesAdapter'],
         database=config["database"])
     register_handlers(updater)
     updater.start_polling()
