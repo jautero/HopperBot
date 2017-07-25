@@ -2,6 +2,7 @@ from note_store import NoteStore
 from pymongo import MongoClient
 
 class MongoNoteStore(NoteStore):
+    NAME_FORMAT = "Note %d"
     def __init__(self,**kwargs):
         self.database_name = self.kwargs.get(
             'database', 'chatterbot-database'
@@ -20,4 +21,11 @@ class MongoNoteStore(NoteStore):
         self.notes = self.database['notes']
         self.notes.create_index('name',unique=True)
 
-    
+    def store(self,note):
+        self.notes.insert_one(note)
+
+    def find(self,note):
+        self.notes.find_one({'name':note})
+
+    def unique_name(self):
+        return self.NAME_FORMAT % (self.notes.count(),)
