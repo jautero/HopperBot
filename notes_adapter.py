@@ -1,11 +1,12 @@
 """LogicAdapter for notes.
 
 Syntax:
-    start note <name>
+    take note <name>
     <note text>
     end note
 """
 from chatterbot.logic import LogicAdapter
+from chatterbot.conversation import Statement
 from chatterbot import utils
 from note_store import NoteStore
 
