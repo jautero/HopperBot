@@ -30,12 +30,21 @@ class NotesAdapter(LogicAdapter):
     def can_process(self, statement):
         return self.taking_note or statement.text.startswith(self.START_NOTE)
     def process(self, statement):
+        response=self.process_statement(statement)
+        if isinstance(response,Statement):
+            response.confidence=1
+            return response
+        else:
+            return Statement(response)
+            
+    def process_statement(self,statement):
         if not self.taking_note:
             return self.start_note(statement)
         if statement.text.startswith(self.END_NOTE):
             return self.store_note(statement)
         self.current_note['content'].append(statement.text)
-        return Statement('line added',confidence=1.0)
+        return Statement('line added')
+
     def start_note(self, statement):
         self.taking_note=True
         note_name=remove_start(statement.text,self.START_NOTE)
@@ -44,15 +53,15 @@ class NotesAdapter(LogicAdapter):
         found=self.store.find(note_name)
         if found:
             self.current_note=found
-            return Statement(found["content"][-1],confidence=1.0)
+            return Statement(found["content"][-1])
         else:
             self.current_note={'name':note_name,'content':[]}
-            return Statement("New note: {}".format(note_name),confidence=1.0)
+            return Statement("New note: {}".format(note_name))
     def store_note(self,statement):
         result=self.store.store(self.current_note)
         if not result:
             self.current_note=None
             self.taking_note=False
-            return Statement("Note stored",confidence=1.0)
+            return Statement("Note stored")
         else:
-            return Statement("Storing failed with {}. Try again.".format(result),confidence=1.0)
+            return Statement("Storing failed with {}. Try again.".format(result))
