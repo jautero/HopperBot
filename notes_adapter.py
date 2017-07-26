@@ -47,7 +47,7 @@ class NotesAdapter(LogicAdapter):
             return Statement(found["content"][-1],confidence=1.0)
         else:
             self.current_note={'name':note_name,'content':[]}
-            return Statement("New note: %s" % (note_name,),confidence=1.0)
+            return Statement("New note: {}".format(note_name),confidence=1.0)
     def store_note(self,statement):
         result=self.store.store(self.current_note)
         if not result:
@@ -55,4 +55,4 @@ class NotesAdapter(LogicAdapter):
             self.taking_note=False
             return Statement("Note stored",confidence=1.0)
         else:
-            return Statement("Storing failed with %s. Try again." %(result,),confidence=1.0)
+            return Statement("Storing failed with {}. Try again.".format(result),confidence=1.0)
