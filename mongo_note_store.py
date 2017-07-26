@@ -25,7 +25,7 @@ class MongoNoteStore(NoteStore):
         self.notes.insert_one(note)
 
     def find(self,note):
-        self.notes.find_one({'name':note})
+        return self.notes.find_one({'name':note})
 
     def unique_name(self):
         return self.NAME_FORMAT % (self.notes.count(),)
