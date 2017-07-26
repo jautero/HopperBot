@@ -22,7 +22,7 @@ class MongoNoteStore(NoteStore):
         self.notes.create_index('name',unique=True)
 
     def store(self,note):
-        self.notes.insert_one(note)
+        self.notes.save(note)
 
     def find(self,note):
         return self.notes.find_one({'name':note})
