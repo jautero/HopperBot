@@ -1,6 +1,6 @@
 FROM python:3-alpine
 
-RUN apk --update add build-base py3-telegram-bot
+RUN apk --update add build-base py-telegram-bot
 
 # pipenv is somewhat pointless in Docker container.
 # RUN pip3 install pipenv
