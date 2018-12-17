@@ -9,6 +9,6 @@ RUN set -ex && mkdir /app
 
 WORKDIR /app
 
-RUN set -ex && pip install python-telegram-bot pyyaml chatterbot
+RUN set -ex && pip install -vvv python-telegram-bot pyyaml chatterbot
 
 COPY src/ ./
