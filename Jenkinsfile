@@ -19,7 +19,7 @@ node {
          * For this example, we're using a Volkswagen-type approach ;-) */
 
         app.inside {
-            sh 'pip install pytest'
+            sh 'pipenv install pytest'
             sh 'py.test test/'
         }
     }
