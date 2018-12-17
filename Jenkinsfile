@@ -19,7 +19,8 @@ node {
          * For this example, we're using a Volkswagen-type approach ;-) */
 
         app.inside {
-            sh 'echo "Tests passed"'
+            sh 'pip install pytest'
+            sh 'cd test; py.test'
         }
     }
 
