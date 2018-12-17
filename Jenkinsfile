@@ -20,7 +20,7 @@ node {
 
         app.inside {
             sh 'pip install pytest'
-            sh 'cd test; py.test'
+            sh 'py.test test/'
         }
     }
 
