@@ -10,4 +10,4 @@ WORKDIR /app
 
 ONBUILD RUN set -ex && pipenv install python-telegram-bot pyyaml chatterbot
 
-ONBUILD COPY src .
+ONBUILD COPY src/ ./
