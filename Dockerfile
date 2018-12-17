@@ -2,12 +2,13 @@ FROM python:3-alpine
 
 RUN apk add build-base 
 
-RUN pip3 install pipenv
+# pipenv is somewhat pointless in Docker container.
+# RUN pip3 install pipenv
 
 RUN set -ex && mkdir /app
 
 WORKDIR /app
 
-RUN set -ex && pipenv install python-telegram-bot pyyaml chatterbot
+RUN set -ex && pip install python-telegram-bot pyyaml chatterbot
 
 COPY src/ ./
