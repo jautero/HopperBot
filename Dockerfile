@@ -11,4 +11,4 @@ WORKDIR /app
 
 RUN set -ex && pip install pyyaml chatterbot
 
-COPY src/ ./
+COPY src/ .
