@@ -23,10 +23,11 @@ pipeline {
             /* Ideally, we would run a test framework against our image.
              * For this example, we're using a Volkswagen-type approach ;-) */
 
-        steps {
-            app.inside {
-                sh 'pip install pytest'
-                sh 'py.test test/'
+            steps {
+                app.inside {
+                    sh 'pip install pytest'
+                    sh 'py.test test/'
+                }
             }
         }
 
