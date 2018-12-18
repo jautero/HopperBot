@@ -1,3 +1,4 @@
+# Note Store
 class NoteStore:
     """Abstract base class for NoteStore
     """
