@@ -1,4 +1,4 @@
 import sys
 
-def test_module_path():
+def test_module():
     assert sys.path == []
