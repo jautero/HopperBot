@@ -1,10 +1,45 @@
 pipeline {
-    agent { dockerfile true }
+    agent any
+    def app
     stages {
-        stage('Test') {
+    
+        stage('Clone repository') {
+            /* Let's make sure we have the repository cloned to our workspace */
+            steps { 
+                checkout scm
+            }
+        }
+
+        stage('Build image') {
+            /* This builds the actual image; synonymous to
+             * docker build on the command line */
+
             steps {
+                app = docker.build("jautero/hopperbot")
+            }
+        }
+
+        stage('Test image') {
+            /* Ideally, we would run a test framework against our image.
+             * For this example, we're using a Volkswagen-type approach ;-) */
+
+        steps {
+            app.inside {
                 sh 'pip install pytest'
-                sh 'cd /app; py.test $WORKSPACE/test/'
+                sh 'py.test test/'
+            }
+        }
+
+        stage('Push image') {
+            /* Finally, we'll push the image with two tags:
+             * First, the incremental build number from Jenkins
+             * Second, the 'latest' tag.
+             * Pushing multiple tags is cheap, as all the layers are reused. */
+            steps {
+                docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+                    app.push("${env.BUILD_NUMBER}")
+                    app.push("latest")
+                }
             }
         }
     }
