@@ -29,7 +29,7 @@ pipeline {
                 script {
                     app.inside {
                         sh 'pip install pytest'
-                        sh 'cd /app; py.test $WORKDIR/test'
+                        sh 'cd /app; py.test $WORKSPACE/test'
                     }
                 }
             }
