@@ -4,7 +4,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'pip install pytest'
-                sh 'cd /app; py.test $WORKSPACE/test'
+                sh 'cd /app; py.test $WORKSPACE/test/'
             }
         }
     }
