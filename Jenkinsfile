@@ -29,8 +29,8 @@ pipeline {
 
             steps {
                 script {
-                    app.inside {
-                        sh 'whoami; pip install pytest'
+                    app.inside("-u 0") {
+                        sh 'pip install pytest'
                         sh 'cd /app; py.test $WORKSPACE/test'
                     }
                 }
