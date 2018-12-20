@@ -30,7 +30,7 @@ pipeline {
             steps {
                 script {
                     app.inside {
-                        sh 'pip install pytest'
+                        sh 'whoami; pip install pytest'
                         sh 'cd /app; py.test $WORKSPACE/test'
                     }
                 }
