@@ -3,6 +3,9 @@ pipeline {
         label 'docker'
     }
 
+    environment {
+        PYTHONDONTWRITEBYTECODE = 'YES'
+    }
     stages {
     
         stage('Clone repository') {
