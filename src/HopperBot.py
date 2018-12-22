@@ -22,7 +22,7 @@ def register_handlers(updater):
 logging.basicConfig(filename="test.log", level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 if __name__ == '__main__':
-    config=yaml.load(file(os.path.expanduser(os.path.join("~",".HopperBot.yaml"))))
+    config=yaml.load(file(os.path.expanduser(os.path.join("/app/config","HopperBot.yaml"))))
     updater=Updater(config["telegram"]["apikey"])
     me=updater.bot.get_me()
     updater.bot.chatbot=ChatBot(me.username,
