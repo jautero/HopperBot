@@ -35,6 +35,7 @@ pipeline {
                     app.inside("-u 0") {
                         sh 'pip install pytest'
                         sh 'cd /app; python -m pytest $WORKSPACE/test'
+                        sh 'rm -rf $WORKSPACE/.pytest_cache'
                     }
                 }
             }
