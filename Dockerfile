@@ -9,6 +9,6 @@ RUN set -ex && mkdir /app
 
 WORKDIR /app
 
-RUN set -ex && pip install --upgrade pip python-telegram-bot pyyaml chatterbot
+RUN set -ex && pip install --upgrade pip python-telegram-bot pyyaml pytz chatterbot
 
 COPY src ./
