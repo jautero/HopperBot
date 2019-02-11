@@ -21,7 +21,7 @@ class NotesAdapter(LogicAdapter):
     END_NOTE='end note'
 
     def __init__(self, chatbot, **kwargs):
-        super(NotesAdapter, self, chatbot).__init__(**kwargs)
+        super(NotesAdapter, self).__init__(chatbot,**kwargs)
         self.taking_note=False
         notes_store=kwargs.get('notes_store','note_store.DictNoteStore')
         utils.validate_adapter_class(notes_store, NoteStore)
