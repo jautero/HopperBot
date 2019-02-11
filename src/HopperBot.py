@@ -30,7 +30,7 @@ if __name__ == '__main__':
         notes_store='mongo_note_store.MongoNoteStore',
         logic_adapters=['notes_adapter.NotesAdapter',
             "chatterbot.logic.BestMatch"],
-        database=config["database"])
+        database=config["database"], database_uri=config["database_uri"])
     register_handlers(updater)
     updater.start_polling()
     updater.idle()
