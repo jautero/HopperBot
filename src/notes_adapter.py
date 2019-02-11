@@ -20,7 +20,7 @@ class NotesAdapter(LogicAdapter):
     START_NOTE='take note'
     END_NOTE='end note'
 
-    def __init__(self,**kwargs):
+    def __init__(self, chatbot, **kwargs):
         super(NotesAdapter, self).__init__(**kwargs)
         self.taking_note=False
         notes_store=kwargs.get('notes_store','note_store.DictNoteStore')
