@@ -2,11 +2,11 @@ from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer
 import yaml,os
 
-config=yaml.load(file(os.path.expanduser(os.path.join("~",".HopperBot.yaml"))))
+config=yaml.load(open(os.path.expanduser(os.path.join("~",".HopperBot.yaml"))))
 
 chatbot=ChatBot('Trainer',
     storage_adapter='chatterbot.storage.MongoDatabaseAdapter',
-    database=config["database"])
+    database_uri=config["database_uri"])
 
 chatbot.set_trainer(ChatterBotCorpusTrainer)
 
