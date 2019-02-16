@@ -65,8 +65,8 @@ pipeline {
                     remote.user = deploy_username
                     remote.identityFile = deploy_key
                     sshScript remote: remote, script: 'docker/deploy.sh'
-                }
             }
+            
         }
     }
 }
