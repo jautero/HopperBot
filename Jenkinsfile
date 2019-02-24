@@ -1,4 +1,5 @@
 pipeline {
+    def remote = [:]
     agent {
         label 'docker'
     }
@@ -6,6 +7,7 @@ pipeline {
     environment {
         PYTHONDONTWRITEBYTECODE = 'YES'
     }
+
     stages {
     
         stage('Clone repository') {
@@ -55,8 +57,6 @@ pipeline {
                 }
             }
         }
-
-        def remote = [:]
 
         stage('Deploy') {
             steps {
