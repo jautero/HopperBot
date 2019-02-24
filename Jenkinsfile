@@ -56,9 +56,10 @@ pipeline {
             }
         }
         stage('Deploy') {
+            def remote = [:]
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'jenkins-deploy', keyFileVariable: 'deploy_key', passphraseVariable: '', usernameVariable: 'deploy_username')]) {
-                    
+
                 }
 
             }
