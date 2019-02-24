@@ -56,6 +56,12 @@ pipeline {
             }
         }
         stage('Deploy') {
+            steps {
+                withCredentials([sshUserPrivateKey(credentialsId: 'jenkins-deploy', keyFileVariable: 'deploy_key', passphraseVariable: '', usernameVariable: 'deploy_username')]) {
+                    
+                }
+
+            }
         /*            def remote =[:]
                     remote.name = 'docker deploy'
                     remote.host = 'docker.eipystyilman.beer'
