@@ -60,17 +60,10 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                withCredentials([sshUserPrivateKey(credentialsId: 'jenkins-deploy', keyFileVariable: 'deploy_key', passphraseVariable: '', usernameVariable: 'deploy_username')]) {
-
+                sshagent(['jenkins-deploy']) {
+                    sh 'ssh core@docker.eipystyilman.beer <docker/deploy.sh'
                 }
-
             }
-        /*            def remote =[:]
-                    remote.name = 'docker deploy'
-                    remote.host = 'docker.eipystyilman.beer'
-                    remote.user = deploy_username
-                    remote.identityFile = deploy_key
-                    sshScript remote: remote, script: 'docker/deploy.sh' */
         }        
     }
 }
