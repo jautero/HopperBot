@@ -1,5 +1,4 @@
 pipeline {
-    def remote = [:]
     agent {
         label 'docker'
     }
