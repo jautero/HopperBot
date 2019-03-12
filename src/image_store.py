@@ -1,4 +1,5 @@
 class ImageStore:
     def __init__(self,key,secret):
-        pass
+        self.key=key
+        self.secret=secret
 
