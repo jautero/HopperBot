@@ -3,7 +3,9 @@ from image_store import ImageStore
 
 
 class TestImageStore(unittest.TestCase):
+    secret="bar"
+    key="foo"
     def test_image_store(self):
-        dut=ImageStore("foo","bar")
-        self.assertEqual(dut.key,"foo")
-        self.assertEqual(dut.secret,"bar")
+        dut=ImageStore(self.key,self.secret)
+        self.assertEqual(dut.key,self.key)
+        self.assertEqual(dut.secret,self.secret)
