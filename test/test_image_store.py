@@ -1,7 +1,7 @@
-import unittest, yaml
+import unittest, yaml, os
 from image_store import ImageStore
 
-config=yaml.load(open("test/test_config.yaml"))
+config=yaml.load(open(os.path.expandvars("$WORKSPACE/test/test_config.yaml")))
 
 class TestImageStore(unittest.TestCase):
     def setUp(self):
