@@ -1,2 +1,4 @@
 class ImageStore:
-    pass
+    def __init__(self,key,secret):
+        pass
+
