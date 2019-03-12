@@ -8,6 +8,6 @@ chatbot=ChatBot('Trainer',
     storage_adapter='chatterbot.storage.MongoDatabaseAdapter',
     database_uri=config["database_uri"])
 
-chatbot.set_trainer(ChatterBotCorpusTrainer)
+trainer = ChatterBotCorpusTrainer(chatbot)
 
-chatbot.train("chatterbot.corpus.english")
+trainer.train("chatterbot.corpus.english")
