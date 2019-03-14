@@ -1,2 +1,4 @@
 store_key: foo
 store_secret: bar
+region: fra1
+endpoint: https://nyc3.digitaloceanspaces.com
