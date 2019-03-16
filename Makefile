@@ -1,5 +1,7 @@
+TEST_DOCKER_TAG := jautero/hopperbot:test
+
 image:
-	docker build .
+	docker build -t $(TEST_DOCKER_TAG) .
 
 test: image
-	docker run -v $(PWD)/test:/app/test jautero/hopperbot sh /app/test/test.sh
+	docker run -v $(PWD)/test:/app/test ${TEST_DOCKER_TAG} sh /app/test/test.sh
