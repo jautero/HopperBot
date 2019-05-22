@@ -9,7 +9,8 @@ RUN set -ex && mkdir /app
 
 WORKDIR /app
 
-RUN set -ex && pip install --upgrade pip pyyaml pytz boto3
+RUN set -ex && pip install --upgrade pip pyyaml pytz boto3 
+RUN set -ex && pip install --upgrade numpy
 RUN set -ex && pip install --upgrade python-telegram-bot chatterbot matrix-client
 
 RUN git clone https://github.com/shawnanastasio/python-matrix-bot-api.git \
