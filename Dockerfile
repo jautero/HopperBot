@@ -1,6 +1,6 @@
 FROM python:3-alpine
 
-RUN apk add --no-cache gcc mailcap python3-dev build-base py-numpy
+RUN apk update && apk add --no-cache gcc mailcap python3-dev build-base py-numpy py3-cryptography
 
 # pipenv is somewhat pointless in Docker container.
 # RUN pip3 install pipenv
