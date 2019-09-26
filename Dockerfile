@@ -1,17 +1,6 @@
-FROM python:3-alpine
+FROM jautero/alpine-chatterbot
 
-RUN apk update && apk add --no-cache gcc mailcap python3-dev build-base py-numpy py3-cryptography linux-headers pcre-dev postgresql-dev libffi-dev cython libressl-dev
-
-# pipenv is somewhat pointless in Docker container.
-# RUN pip3 install pipenv
-
-RUN set -ex && mkdir /app
-
-WORKDIR /app
-
-RUN set -ex && pip install ${PIP_ARGS} --upgrade pip pyyaml pytz boto3 
-#RUN set -ex && pip install --upgrade numpy cryptography
-RUN set -ex && pip install ${PIP_ARGS} --upgrade python-telegram-bot chatterbot matrix-client
+RUN set -ex && pip install ${PIP_ARGS} --upgrade python-telegram-bot matrix-client
 
 RUN git clone https://github.com/shawnanastasio/python-matrix-bot-api.git \
     && cd python-matric-bot-api && python setup.py install
