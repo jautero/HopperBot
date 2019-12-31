@@ -20,6 +20,8 @@ pipeline {
 
             steps {
                 script {
+                    def baseimage = docker.image('jautero/alpine-chatterbot')
+                    baseimage.pull()
                     app = docker.build("jautero/hopperbot")
                 }
             }
