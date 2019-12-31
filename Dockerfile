@@ -1,4 +1,4 @@
-FROM python:3-alpine
+FROM jautero/alpine-chatterbot
 
 RUN set -ex && pip install ${PIP_ARGS} --upgrade python-telegram-bot matrix-client boto3
 
