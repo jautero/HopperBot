@@ -1,4 +1,4 @@
-import unittest, json, StringIO
+import unittest, json, io
 import HopperBot
 
 class MessageUT:
@@ -10,7 +10,7 @@ class BasicTestCase(unittest.TestCase):
         self.nick="tester"
         self.botname="testbot"
         self.bot=HopperBot.HopperBot(self.botname)
-        pinkydict=json.load(file("pinky.json"))
+        pinkydict=json.load(open("pinky.json"))
         self.responses=["I don't see what that has to do with anything!","A likely story!"]
         self.pinkyanswers=[a.format(self.nick) for a in pinkydict["answers"]]
         self.pinkyquestions=pinkydict["questions"]
@@ -41,7 +41,7 @@ class BasicTestCase(unittest.TestCase):
             self.bot.recall(set(("foo","bar")))
     def test_dump(self):
         answer=self.bot.process(MessageUT({"name":self.nick,"text":"dump memory"}))
-        dumpstream=StringIO.StringIO()
+        dumpstream=io.StringIO()
         self.bot.memory.dump(dumpstream)
         self.assertEqual(dumpstream.getvalue(), answer)
     def test_recalling_message(self):
