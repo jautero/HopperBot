@@ -67,3 +67,6 @@ target/
 
 # VSCode
 .vscode
+
+# Virtual environment
+.venv
