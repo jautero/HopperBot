@@ -2,16 +2,4 @@
 set -e
 
 PYTHON=python3
-
-# Create virtualenv if it doesn't exist
-[ -d .venv ] || $PYTHON -m venv .venv
-# Activate virtualenv
-
-. .venv/bin/activate
-
-#upgrade pip and opsdroid
-pip install --upgrade pip opsdroid
-
-. env
-
-opsdroid start
+pipenv run opsdroid start
