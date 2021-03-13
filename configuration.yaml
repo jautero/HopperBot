@@ -1,7 +1,8 @@
-web:
-  base-url: $BASE_URL
 connectors:
-- name: telegram
-  token: "1617283717:AAEE2MDmMImD08TAKLdZ3f9_yYoOcN1Z4Aw"
+  - name: matrix
+    access_token: "ACCESSTOKENHERE"
+    homeserver: "https://matrix.org"
+    rooms:
+      'main': '#someroom:matrix.org'
 skills:
   hello: {}
