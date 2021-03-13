@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 opsdroid = {extras = ["matrix"], version = "*"}
+matrix-nio = "*"
 
 [dev-packages]
 
