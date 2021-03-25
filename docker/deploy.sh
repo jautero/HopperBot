@@ -1,7 +1,0 @@
-#!/bin/sh
-cd /srv/HopperBot
-CONTAINER_ID=`cat container.id`
-docker stop $CONTAINER_ID
-docker rm $CONTAINER_ID
-docker pull jautero/hopperbot
-docker run -d -v $PWD/config:/app/config --name hopperbot --network web jautero/hopperbot python HopperBot.py >container.id
