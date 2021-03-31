@@ -1,0 +1,34 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+# bs4 = "*"
+# pyTeamUp = "*"
+# pandas = "*"
+matrix-nio = "*"
+# geopy = "*"
+# google-api-python-client = "*"
+# google-auth-httplib2 = "*"
+# google-auth-oauthlib = "*"
+# requests = "*"
+# igramscraper = "*"
+# httpx = "*"
+PyYAML = "==5.3"
+# wolframalpha = "*"
+# Mastodon-py = "*"
+# pycups = "*"
+# pygithub = "*"
+
+[dev-packages]
+pylint = "*"
+pycodestyle = "*"
+flake8 = "*"
+autopep8 = "*"
+black = "*"
+ipython = "*"
+isort = "*"
+
+[pipenv]
+allow_prereleases = true
