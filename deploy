@@ -2,7 +2,7 @@
 host="admin@sso.eipystyilman.beer"
 systemddir="/etc/systemd/system"
 if [ "$1" != "host" ]; then
-    zip hopperbot.zip Pipfile bot.py hopperbot.service  modules run.sh
+    zip -r hopperbot.zip Pipfile bot.py hopperbot.service  modules run.sh
     scp deploy hopperbot.zip ${host}:
     exec ssh $host sudo ./deploy host
 fi
