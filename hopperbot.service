@@ -8,7 +8,7 @@ StartLimitBurst=5
 [Service]
 Type=simple
 WorkingDirectory=/home/hopperbot/HopperBot/
-ExecStart=/home/hopperbot/HopperBot/start
+ExecStart=/home/hopperbot/HopperBot/run.sh
 StandardInput=tty-force
 Restart=always
 RestartSec=5s
