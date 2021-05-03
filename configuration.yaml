@@ -1,8 +1,0 @@
-connectors:
-  - name: matrix
-    access_token: "ACCESSTOKENHERE"
-    homeserver: "https://matrix.org"
-    rooms:
-      'main': '#someroom:matrix.org'
-skills:
-  hello: {}
