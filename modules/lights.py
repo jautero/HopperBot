@@ -1,6 +1,10 @@
 from modules.common.module import BotModule
 
 class LightsModule(BotModule):
-    def __init_(self, name):
-        super().__init__(name)
-        
+  
+  async def matrix_message(self, bot, room, event):
+    pass
+
+  def help(self):
+    return 'Control lights'
+  
