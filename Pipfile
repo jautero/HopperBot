@@ -29,6 +29,7 @@ autopep8 = "*"
 black = "*"
 ipython = "*"
 isort = "*"
+pytest = "*"
 
 [pipenv]
 allow_prereleases = true
