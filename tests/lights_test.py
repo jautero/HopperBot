@@ -19,7 +19,25 @@ def test_create_module(dut):
 def test_is_botmodule(dut):
   assert isinstance(dut,BotModule)
 
+class TestEvent:
+  pass
+  
 @pytest.mark.asyncio
 async def test_lights_on(dut,mock_aiohttpclient):
-  mock_aiohttpclient.post('https://za6qz3v9vsv57ez6xmh5ubphzkys1xky.ui.nabu.casa/api/services/light/turn_on',status=200)
-  assert 200 == await dut.lights_on("light.eteisen_kattolamppu")
+  mock_aiohttpclient.post(dut.instance+'/api/services/light/turn_on',status=200)
+  assert 200 == await dut.lights("light.eteisen_kattolamppu","turn_on")
+
+@pytest.mark.asyncio
+async def  test_lights_message(dut,mock_aiohttpclient):
+  mock_aiohttpclient.post(dut.instance+'/api/services/light/turn_on',status=200)
+  mock_aiohttpclient.post(dut.instance+'/api/services/light/turn_off',status=200)
+  mock_aiohttpclient.post(dut.instance+'/api/services/light/toggle',status=200)
+
+  event=TestEvent()
+  event.body="!lights light.eteisen_kattolamppu on"
+  await dut.matrix_message("testbot","testroom",event)
+  event.body="!lights light.eteisen_kattolamppu off"
+  await dut.matrix_message("testbot","testroom",event)
+  event.body="!lights light.eteisen_kattolamppu toggle"
+  await dut.matrix_message("testbot","testroom",event)
+  
