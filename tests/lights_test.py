@@ -6,7 +6,7 @@ from modules.common.module import BotModule
 
 @pytest.fixture
 def dut():
-  return modules.lights.LightsModule("lights")
+  return modules.lights.MatrixModule("lights")
 
 @pytest.fixture
 def mock_aiohttpclient():

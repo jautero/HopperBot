@@ -1,7 +1,7 @@
 import aiohttp, os
 from modules.common.module import BotModule
 
-class LightsModule(BotModule):
+class MatrixModule(BotModule):
 
   def __init__(self, name):
     super().__init__(name)
@@ -16,7 +16,7 @@ class LightsModule(BotModule):
       action="turn_on"
     elif args[2] == "off":
       action="turn_off"
-    self.lights(entity_id,action)
+    await self.lights(entity_id,action)
 
   def help(self):
     return 'Control lights'
