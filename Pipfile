@@ -30,6 +30,8 @@ black = "*"
 ipython = "*"
 isort = "*"
 pytest = "*"
+aioresponses = "*"
+pytest-asyncio = "*"
 
 [pipenv]
 allow_prereleases = true
